@@ -9,34 +9,51 @@ public class Inimigo : MonoBehaviour
     public float velocidadeEscala = 0.1f; // A velocidade de crescimento/redução
     public int meuLevel, vida;
     Player player;
+    public float distanciaDeAtaque, distancia;
+    Transform Player;
+    public GameObject fumaça;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType(typeof(Player)) as Player;
+        cooldown = 0.0005f;
+        velocidadeEscala = 0.01f;
+        player = FindObjectOfType<Player>();
+        Player = GameObject.FindWithTag("Player").transform;
+        distanciaDeAtaque = 7;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        distancia = Vector2.Distance(transform.position, player.transform.position);
     }
 
     private void OnMouseDown()
     {
-        if (AmoStatico.levelDoPlayer >= meuLevel)
+        if (distancia < distanciaDeAtaque)
         {
-            vida--;
-           
+            if (AmoStatico.levelDoPlayer >= meuLevel)
+            {
+                vida--;
 
+                // Obtendo a posição do mouse em coordenadas do mundo
+                Vector2 posicaoMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                // Instanciar a fumaça na posição do mouse
+                Instantiate(fumaça, posicaoMouse, Quaternion.identity);
+
+                // Verifica se o inimigo foi derrotado
+                if (vida <= 0)
+                {
+                    Destroy(gameObject);
+                    AmoStatico.levelDoPlayer++;
+                    player.atualizarTexto();
+                }
+
+                StartCoroutine(subirEscala());
+            }
         }
-        if (vida <= 0)
-        {
-            Destroy(gameObject);
-            AmoStatico.levelDoPlayer++;
-            player.atualizarTexto();
-        }
-        StartCoroutine(subirEscala());
     }
 
     IEnumerator subirEscala()
@@ -65,3 +82,4 @@ public class Inimigo : MonoBehaviour
         transform.localScale = escalaOriginal;
     }
 }
+ 
