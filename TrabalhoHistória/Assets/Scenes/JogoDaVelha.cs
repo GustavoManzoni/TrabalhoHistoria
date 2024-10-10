@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JogoDaVelha : MonoBehaviour
 {
 
     [Header("Variaveis")]
-    [SerializeField]private int[] _verificação;
+    [SerializeField] private int[] _verificação = new int[9];
     [SerializeField] private int _quemJoga;
     [SerializeField] private bool _xVenceu, _oVenceu;
     public GameObject[] bolas, xzes;
@@ -15,7 +16,7 @@ public class JogoDaVelha : MonoBehaviour
     void Start()
     {
         _quemJoga = 2;
-        Jogar(1);
+
     }
 
     // Update is called once per frame
@@ -23,22 +24,37 @@ public class JogoDaVelha : MonoBehaviour
     {
         
     }
+    public void ColocarXeO(int i)
+    {
+        if (_quemJoga == 2)
+        {
+            xzes[i].SetActive(true);
+
+
+        }
+        else
+        {
+            bolas[i].SetActive(true);
+
+
+        }
+        
+
+
+    }
     public void Jogar(int i)
     {
         _verificação[i] = _quemJoga;
-       
+        ColocarXeO(i);
 
-        for (int x = 1; x < 3; x++)
+        for (int x = 2; x < 4; x++)
         {
-      
+
             if (_verificação[0] == x)
             {
                 if (_verificação[1] == x && _verificação[2] == x)
-                {   
+                {
                     VerificarVencedor(x);
-                    
-
-
                 }
                 if (_verificação[3] == x && _verificação[6] == x)
                 {
@@ -55,6 +71,7 @@ public class JogoDaVelha : MonoBehaviour
 
                 }
 
+
             }
             else if (_verificação[2] == x)
             {
@@ -64,7 +81,8 @@ public class JogoDaVelha : MonoBehaviour
 
 
 
-                }else if (_verificação[4] == x && _verificação[6] == x)
+                }
+                else if (_verificação[4] == x && _verificação[6] == x)
                 {
                     VerificarVencedor(x);
 
@@ -83,8 +101,40 @@ public class JogoDaVelha : MonoBehaviour
 
                 }
 
+                if (_verificação[1] == x && _verificação[7] == x && _verificação[4] == x)
+                {
+
+                    VerificarVencedor(x);
+
+                }
+                if (_verificação[3] == x && _verificação[4] == x && _verificação[5] == x)
+                {
+
+                    VerificarVencedor(x);
+
+                }
+
+
             }
+            bool todosDiferentesDeZero = true;
+
+            foreach (int num in _verificação)
+            {
+                if (num == 0)
+                {
+                    todosDiferentesDeZero = false;
+                    break; 
+                }
+            }
+
+            if (todosDiferentesDeZero)
+            {
+                StartCoroutine(Resetar());
+            }
+
+
         }
+
         if (_quemJoga == 2)
         {
             _quemJoga = 3;
@@ -100,33 +150,27 @@ public class JogoDaVelha : MonoBehaviour
 
 
     }
-
     public void VerificarVencedor(int x)
     {
-        if(x == 2)
+        if (x == 2)
         {
-            Vencer("x");
+            Debug.Log("Simbolo vencedor: X");
 
         }
         else
         {
 
-            Vencer("o");
+            Debug.Log("Simbolo vencedor: O");
 
         }
-
-
-    }
-    public void Vencer(string quem)
-    {
-
-
+        StartCoroutine(Resetar());
+       
 
     }
-    public void ColocarXeO()
+    IEnumerator Resetar()
     {
-
-
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("jcakons");
 
 
     }
