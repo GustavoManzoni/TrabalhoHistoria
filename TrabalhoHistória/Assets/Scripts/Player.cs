@@ -2,13 +2,15 @@
     using System.Collections.Generic;
     using UnityEngine;
     using TMPro;
+using Unity.VisualScripting;
 
-    public class Player : MonoBehaviour
+public class Player : MonoBehaviour
     {
         public float velocidade;
         Rigidbody2D rb;
         public TMP_Text exibicaoLevel;
     Animator anim;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -48,7 +50,35 @@
 
 
         }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("escada"))
+        {
+            velocidade = 3;
+
+
+        }
+       
+
+
+
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject.CompareTag("escada"))
+        {
+            velocidade = 5;
+
+
+        }
+
+
+
+    }
+
+}
+
     public static class AmoStatico
     {
 

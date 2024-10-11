@@ -13,8 +13,8 @@ public class ArvoresRandomicas : MonoBehaviour
     {
         for (int i = 0; i < spawns.Length; i++) 
         {
-            int vaiTer = Random.Range(0, 3);
-            if(vaiTer == 2)
+            int vaiTer = Random.Range(0, 6);
+            if(vaiTer == 2 || vaiTer == 1 || vaiTer == 0)
             {
                 Instantiate(avore, spawns[i].transform.position, Quaternion.identity);
 
