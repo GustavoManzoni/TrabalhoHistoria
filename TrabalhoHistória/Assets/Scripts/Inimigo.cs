@@ -12,6 +12,7 @@ public class Inimigo : MonoBehaviour
     public float distanciaDeAtaque, distancia;
     Transform Player;
     public GameObject fumaça;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class Inimigo : MonoBehaviour
         player = FindObjectOfType<Player>();
         Player = GameObject.FindWithTag("Player").transform;
         distanciaDeAtaque = 7;
+        animator  = GameObject.FindWithTag("Player").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,14 +38,12 @@ public class Inimigo : MonoBehaviour
             if (AmoStatico.levelDoPlayer >= meuLevel)
             {
                 vida--;
+                animator.SetTrigger("Atacando");
 
-                // Obtendo a posição do mouse em coordenadas do mundo
-                Vector2 posicaoMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                // Instanciar a fumaça na posição do mouse
-                Instantiate(fumaça, posicaoMouse, Quaternion.identity);
+               
+                Instantiate(fumaça, transform.position, Quaternion.identity);
 
-                // Verifica se o inimigo foi derrotado
                 if (vida <= 0)
                 {
                     Destroy(gameObject);
