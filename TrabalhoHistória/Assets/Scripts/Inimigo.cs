@@ -81,5 +81,7 @@ public class Inimigo : MonoBehaviour
         // Garantir que a escala volte ao original
         transform.localScale = escalaOriginal;
     }
+
+ 
 }
  

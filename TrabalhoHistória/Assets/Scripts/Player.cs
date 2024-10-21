@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public TMP_Text exibicaoLevel;
     Animator anim;
     bool olhandoDireita = true;
+    bool primeiroItem, segundoItem, terceiroItem;
     // Start is called before the first frame update
     void Start()
     {
