@@ -11,6 +11,13 @@ TagManager:
   - finalBoss
   - inim1
   - Placa1
+  - Item1
+  - Item2
+  - Item3
+  - Inim1
+  - Inim2
+  - Inim3
+  - BossFinal
   layers:
   - Default
   - TransparentFX

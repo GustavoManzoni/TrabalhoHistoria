@@ -13,7 +13,7 @@ public class Inimigo : MonoBehaviour
     Transform Player;
     public GameObject fumaça;
     Animator animator;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +33,37 @@ public class Inimigo : MonoBehaviour
 
     private void OnMouseDown()
     {
+       
         if (distancia < distanciaDeAtaque)
         {
+          
             if (AmoStatico.levelDoPlayer >= meuLevel)
             {
+              
+                switch (gameObject.tag)
+                {
+                    
+
+                    case "Inim2":
+                        if (!AmoStatico.item1)
+                            player.playerMorrer();
+                      
+                        return;
+
+                    case "Inim3":
+                        if (!AmoStatico.item2)
+                            player.playerMorrer();
+                       
+                        return;
+                    case "BossFinal":
+                        if (!AmoStatico.item2)
+                            player.playerMorrer();
+
+                        return;
+
+
+
+                }
                 vida--;
                 animator.SetTrigger("Atacando");
 

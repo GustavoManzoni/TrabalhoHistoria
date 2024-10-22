@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8128465471160790693}
   m_Layer: 0
   m_Name: Minion3
-  m_TagString: Untagged
+  m_TagString: Inim3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   cooldown: 0.01
   escalaMaxima: 1.2
   velocidadeEscala: 0
-  meuLevel: 0
+  meuLevel: 10
   vida: 3
   distanciaDeAtaque: 0
   distancia: 0
@@ -118,7 +118,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3689889937036923361}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
