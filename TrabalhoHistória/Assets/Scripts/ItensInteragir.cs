@@ -9,11 +9,12 @@ public class ItensInteragir : MonoBehaviour
     public KeyCode interactionKey = KeyCode.E;
     public float interactionRange = 2.0f;
     private Transform player;
-
+   GameManager gameManager;
+    
   
     private void Start()
     {
-
+        gameManager = FindObjectOfType<GameManager>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         interactionPrompt.SetActive(false);
     }
@@ -46,23 +47,26 @@ public class ItensInteragir : MonoBehaviour
        {
             case "Item1":
                 AmoStatico.item1 = true;
-                Debug.Log("1");
+              
                 break;
 
             case "Item2":
 
                 AmoStatico.item2 = true;
-                Debug.Log("2");
+             
                 break;
 
             case "Item3":
                 AmoStatico.item3 = true;
-                Debug.Log("3");
+              
                 break;
 
         }
+      
 
+        
     }
+    
     
    
 }

@@ -7,11 +7,12 @@ public class Placa : MonoBehaviour
     public KeyCode interactionKey = KeyCode.E;
     public float interactionRange = 2.0f;
     private Transform player;
+
   
     public TMP_Text texto;
     private void Start()
     {
-
+       
         player = GameObject.FindGameObjectWithTag("Player").transform;
         interactionPrompt.SetActive(false);
     }
