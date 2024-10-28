@@ -29,6 +29,7 @@ public class Inimigo : MonoBehaviour
     void Update()
     {
         distancia = Vector2.Distance(transform.position, player.transform.position);
+        Debug.Log(distancia);
     }
 
     private void OnMouseDown()
@@ -47,23 +48,23 @@ public class Inimigo : MonoBehaviour
                         if (!AmoStatico.item1)
                             player.playerMorrer();
 
-                        return;
+                        break;
                     case "Inim2":
                         if (!AmoStatico.item2)
                             player.playerMorrer();
                       
-                        return;
+                        break;
 
                     case "Inim3":
                         if (!AmoStatico.item3)
                             player.playerMorrer();
                        
-                        return;
+                        break;
                     case "BossFinal":
                         if (!AmoStatico.item3)
                             player.playerMorrer();
 
-                        return;
+                        break;
 
 
 
