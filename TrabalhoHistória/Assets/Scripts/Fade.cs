@@ -12,8 +12,8 @@ public class Fade : MonoBehaviour
     {
         if(gameObject.tag == "precisaDesat")
         {
-         
 
+            StartCoroutine(ativ());
 
         }
 

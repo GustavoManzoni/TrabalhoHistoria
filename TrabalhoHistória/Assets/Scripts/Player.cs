@@ -10,12 +10,13 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     public TMP_Text exibicaoLevel;
     Animator anim;
-    [SerializeField]GameObject avisoPerder;
+    [SerializeField]GameObject avisoPerder, preto;
     bool olhandoDireita = true;
     bool primeiroItem, segundoItem, terceiroItem;
     // Start is called before the first frame update
     void Start()
     {
+        AmoStatico.levelDoPlayer = 10;
         rb = GetComponent<Rigidbody2D>();
         atualizarTexto();
         anim = GetComponent<Animator>();
@@ -26,11 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movimento();
-        if(Input.GetKeyDown(KeyCode.C)) 
-        {
-            anim.SetBool("Morto", true);
         
-        }
 
     }
     void Movimento()
@@ -71,20 +68,23 @@ public class Player : MonoBehaviour
     {
 
         StartCoroutine(PlayerMorrer());
-
+        preto.SetActive(true);
     }
    
     IEnumerator PlayerMorrer()
     {
-        anim.SetBool("Morto", true);
+       
+        
         yield return new WaitForSeconds(2);
-        avisoPerder.SetActive(true);
         AmoStatico.levelDoPlayer = 0;
         AmoStatico.item3 = false;
         AmoStatico.item2 = false;
         AmoStatico.item3 = false;
     }
-
+    public void bobo()
+    {
+        bobo();
+    }
 
 }
 

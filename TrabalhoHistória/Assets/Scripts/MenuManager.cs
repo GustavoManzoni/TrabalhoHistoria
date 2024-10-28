@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("JogoDVerdade"); 
 
     }
+    
     public void Quit()
     {
         Application.Quit();

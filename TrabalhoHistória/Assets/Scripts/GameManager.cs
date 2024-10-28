@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
 
             timer = 0;
         }
+
     }
     IEnumerator spawnar(int i, GameObject minionLocal, float cooldown)
     {
@@ -80,5 +82,11 @@ public class GameManager : MonoBehaviour
 
 
     }
-    
+    public void MainMenu()
+    {
+
+        SceneManager.LoadScene("MainMenu");
+
+    }
+
 }

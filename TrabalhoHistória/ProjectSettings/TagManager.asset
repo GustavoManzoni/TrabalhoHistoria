@@ -18,6 +18,7 @@ TagManager:
   - Inim2
   - Inim3
   - BossFinal
+  - precisaDesat
   layers:
   - Default
   - TransparentFX
