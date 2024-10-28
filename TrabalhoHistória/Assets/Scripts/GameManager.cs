@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject[] minions, spawns;
+    public GameObject[] minions, spawns, slotsInv;
     public GameObject minion1, minion2, minion3;
     public float timer;
   

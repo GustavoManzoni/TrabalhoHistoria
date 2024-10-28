@@ -47,21 +47,23 @@ public class ItensInteragir : MonoBehaviour
        {
             case "Item1":
                 AmoStatico.item1 = true;
-              
+                gameManager.slotsInv[0].SetActive(true);
                 break;
 
             case "Item2":
 
                 AmoStatico.item2 = true;
-             
+                gameManager.slotsInv[1].SetActive(true);
+
                 break;
 
             case "Item3":
                 AmoStatico.item3 = true;
-              
+                gameManager.slotsInv[2].SetActive(true);
                 break;
 
         }
+        Destroy(gameObject);
       
 
         

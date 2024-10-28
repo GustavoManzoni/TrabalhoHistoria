@@ -227,7 +227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00088500977, y: -839}
+  m_AnchoredPosition: {x: -0.0000096597, y: -1829}
   m_SizeDelta: {x: 1920, y: 2600.0984}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418357913
@@ -251,7 +251,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\t     Cr\xE9ditos\n\n Artista/Game Designer:\n Guilherme Dominoni Gon\xE7alves\n\n
-    Porgramador:\n Gustavo Serafim Manzoni\n\n Assets:\n -Mapas:\n Cainos\n Clockwork
+    Programador:\n  Gustavo Serafim Manzoni\n\n Assets:\n -Mapas:\n Cainos\n Clockwork
     Raven Studios\n CraftPix.net\n Shade\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23cbda5d283f9c94abb68caa5aad80cd, type: 2}
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  maxPosY: 0
+  maxPosY: 760.44
   _leaveButton_Btn: {fileID: 1177176533}
 --- !u!1 &551093237
 GameObject:
