@@ -80,6 +80,12 @@ public class Inimigo : MonoBehaviour
                     Destroy(gameObject);
                     AmoStatico.levelDoPlayer++;
                     player.atualizarTexto();
+                    if(gameObject.tag == "BossFinal")
+                    {
+
+                        player.vencer();
+
+                    }
                 }
 
                 StartCoroutine(subirEscala());

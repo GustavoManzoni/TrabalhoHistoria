@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         atualizarTexto();
         anim = GetComponent<Animator>();
-        vencer();
+       
 
     }
 
