@@ -42,21 +42,25 @@ public class Inimigo : MonoBehaviour
               
                 switch (gameObject.tag)
                 {
-                    
 
-                    case "Inim2":
+                    case "Inim1":
                         if (!AmoStatico.item1)
+                            player.playerMorrer();
+
+                        return;
+                    case "Inim2":
+                        if (!AmoStatico.item2)
                             player.playerMorrer();
                       
                         return;
 
                     case "Inim3":
-                        if (!AmoStatico.item2)
+                        if (!AmoStatico.item3)
                             player.playerMorrer();
                        
                         return;
                     case "BossFinal":
-                        if (!AmoStatico.item2)
+                        if (!AmoStatico.item3)
                             player.playerMorrer();
 
                         return;

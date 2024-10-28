@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -16,10 +17,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AmoStatico.levelDoPlayer = 10;
+       
         rb = GetComponent<Rigidbody2D>();
         atualizarTexto();
         anim = GetComponent<Animator>();
+        vencer();
 
     }
 
@@ -27,8 +29,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movimento();
-        
-
+       
     }
     void Movimento()
     {
@@ -84,6 +85,18 @@ public class Player : MonoBehaviour
     public void bobo()
     {
         bobo();
+    }
+    public void vencer()
+    {
+        preto.tag = "Untagged";
+        preto.SetActive (true);
+        Invoke("trocar", 2.5f);
+    }
+    public void trocar()
+    {
+        SceneManager.LoadScene("cutscene");
+
+
     }
 
 }
