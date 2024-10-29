@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
     Animator anim;
     [SerializeField]GameObject avisoPerder, preto;
     bool olhandoDireita = true;
-    bool primeiroItem, segundoItem, terceiroItem;
+    public int vida;
+    public GameObject[] playerVida;
+    public bool podeBater;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,15 +23,37 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         atualizarTexto();
         anim = GetComponent<Animator>();
-       
-
+        vida = 3;
+        podeBater = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         Movimento();
-       
+       switch (vida) 
+       {
+            case 0:
+                playerVida[0].SetActive(false);
+                playerMorrer();
+                AmoStatico.levelDoPlayer = 0;
+                AmoStatico.item3 = false;
+                AmoStatico.item2 = false;
+                AmoStatico.item3 = false;
+                break;
+            case 1:
+                playerVida[1].SetActive(false);
+                break;
+
+            case 2:
+                playerVida[2].SetActive(false);
+                break;
+
+           
+
+
+
+        }
     }
     void Movimento()
     {
@@ -58,6 +82,12 @@ public class Player : MonoBehaviour
             }
 
         
+    }
+    public IEnumerator resetarCooldown()
+    {
+        yield return new WaitForSeconds(1.5f);
+        podeBater = true;
+
     }
     public void atualizarTexto()
     {

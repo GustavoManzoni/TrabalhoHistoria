@@ -13,23 +13,25 @@ public class Inimigo : MonoBehaviour
     Transform Player;
     public GameObject fumaça;
     Animator animator;
-    
+    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        cooldown = 0.0005f;
+        cooldown = 0;
         velocidadeEscala = 0.01f;
+        escalaMaxima = 1.2f;
         player = FindObjectOfType<Player>();
         Player = GameObject.FindWithTag("Player").transform;
         distanciaDeAtaque = 7;
         animator  = GameObject.FindWithTag("Player").GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         distancia = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distancia);
+        
     }
 
     private void OnMouseDown()
@@ -40,56 +42,71 @@ public class Inimigo : MonoBehaviour
           
             if (AmoStatico.levelDoPlayer >= meuLevel)
             {
-              
-                switch (gameObject.tag)
+                if (player.podeBater)
                 {
-
-                    case "Inim1":
-                        if (!AmoStatico.item1)
-                            player.playerMorrer();
-
-                        break;
-                    case "Inim2":
-                        if (!AmoStatico.item2)
-                            player.playerMorrer();
-                      
-                        break;
-
-                    case "Inim3":
-                        if (!AmoStatico.item3)
-                            player.playerMorrer();
-                       
-                        break;
-                    case "BossFinal":
-                        if (!AmoStatico.item3)
-                            player.playerMorrer();
-
-                        break;
-
-
-
-                }
-                vida--;
-                animator.SetTrigger("Atacando");
-
-
-               
-                Instantiate(fumaça, transform.position, Quaternion.identity);
-
-                if (vida <= 0)
-                {
-                    Destroy(gameObject);
-                    AmoStatico.levelDoPlayer++;
-                    player.atualizarTexto();
-                    if(gameObject.tag == "BossFinal")
+                    switch (gameObject.tag)
                     {
 
-                        player.vencer();
+                        case "Inim1":
+                            if (!AmoStatico.item1)
+                                player.playerMorrer();
+
+                            break;
+                        case "Inim2":
+                            if (!AmoStatico.item2)
+                                player.playerMorrer();
+
+                            break;
+
+                        case "Inim3":
+                            if (!AmoStatico.item3)
+                                player.playerMorrer();
+
+                            break;
+                        case "BossFinal":
+                            if (!AmoStatico.item3)
+                                player.playerMorrer();
+
+                            break;
+
+
 
                     }
-                }
+                    vida--;
+                    animator.SetTrigger("Atacando");
 
-                StartCoroutine(subirEscala());
+
+
+                    Instantiate(fumaça, transform.position, Quaternion.identity);
+
+                    if (vida <= 0)
+                    {
+                        Destroy(gameObject);
+                        AmoStatico.levelDoPlayer++;
+                        player.atualizarTexto();
+                        if (gameObject.tag == "BossFinal")
+                        {
+
+                            player.vencer();
+
+                        }
+                    }
+
+                    StartCoroutine(subirEscala());
+                    player.podeBater = false;
+                    StartCoroutine(player.resetarCooldown());
+                }   
+            }
+            else
+            {
+                if (player.podeBater)
+                {
+                    player.vida--;
+                    player.podeBater = false;
+                    StartCoroutine(player.resetarCooldown());
+                    StartCoroutine(gameManager.TextoAviso());
+                    
+                }
             }
         }
     }
