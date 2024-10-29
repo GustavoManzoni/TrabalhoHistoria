@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
     public GameObject[] minions, spawns, slotsInv;
     public GameObject minion1, minion2, minion3, textoAviso, pause;
-    public float timer;
-    
-  
+    public float timer, cooldown;
+ 
 
 
 
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetButtonDown("Cancel"))
         {
             pause.SetActive(pause.activeSelf ? false : true);
-
+          
         }
         timer += Time.deltaTime;
         if(timer > 3)
@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
 
 
     }
+   
     public IEnumerator TextoAviso()
     {
         textoAviso.SetActive(true);
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
     {
 
         SceneManager.LoadScene("MainMenu");
-
+            
     }
 
 }
