@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject[] minions, spawns, slotsInv;
-    public GameObject minion1, minion2, minion3, textoAviso;
+    public GameObject minion1, minion2, minion3, textoAviso, pause;
     public float timer;
+    
   
 
 
@@ -42,6 +43,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            pause.SetActive(pause.activeSelf ? false : true);
+
+        }
         timer += Time.deltaTime;
         if(timer > 3)
         {
