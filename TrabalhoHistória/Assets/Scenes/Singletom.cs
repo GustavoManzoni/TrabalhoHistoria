@@ -1,36 +1,53 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Singletom : MonoBehaviour
 {
     public static Singletom Instance; // Instância do singleton
     public AudioSource audioSource; // Fonte de áudio para tocar a música
+    public Slider volumeSlider; 
 
     private void Awake()
     {
-        // Verifica se já existe uma instância
+     
         if (Instance == null)
         {
-            Instance = this; // Define esta instância como a única
-            DontDestroyOnLoad(gameObject); // Mantém este objeto ao trocar de cena
+            Instance = this; 
+            DontDestroyOnLoad(gameObject); 
         }
         else
         {
-            Destroy(gameObject); // Destroi a nova instância se já existe uma
+            Destroy(gameObject); 
+            return;
         }
     }
 
     private void Start()
     {
-        // Toca a música em loop
+       
         if (audioSource != null)
         {
-            audioSource.loop = true; // Define para tocar em loop
-            audioSource.Play(); // Inicia a música
+            audioSource.loop = true;
+            audioSource.Play();
         }
         else
         {
             Debug.LogWarning("AudioSource não está atribuído no MusicManager.");
         }
+
+      
+        if (volumeSlider != null)
+        {
+            volumeSlider.onValueChanged.AddListener(AdjustVolume);
+            volumeSlider.value = audioSource.volume; 
+        }
+    }
+
+    private void AdjustVolume(float volume)
+    {
+        if (audioSource != null)
+        {
+            audioSource.volume = volume;
+        }
     }
 }
-
