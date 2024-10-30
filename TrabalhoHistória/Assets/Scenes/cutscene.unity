@@ -50015,9 +50015,9 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 814eb379b0feadb4b99fa41dd043fb3f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.19
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -50108,10 +50108,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 903012161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6525f75d25ebcf84384880a2165e42e6, type: 3}
+  m_Script: {fileID: 11500000, guid: ed2613685b4a2d349983f7ad70e6f8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 903012164}
+  audioMixer: {fileID: 24100000, guid: 31f18f1534517804d84b1db71f468ea3, type: 2}
+  masterSlider: {fileID: 0}
+  backgroundMusic: {fileID: 903012164}
 --- !u!1001 &1027869861
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,10 +16,12 @@ public class Player : MonoBehaviour
     public int vida;
     public GameObject[] playerVida;
     public bool podeBater;
+    public AudioClip somEspada;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-       
+       audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         atualizarTexto();
         anim = GetComponent<Animator>();
@@ -128,7 +130,12 @@ public class Player : MonoBehaviour
 
 
     }
+    public void TocarSomEspada()
+    {
+        audioSource.PlayOneShot(somEspada);
 
+
+    }
 }
 
 public static class AmoStatico

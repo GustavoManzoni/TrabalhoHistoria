@@ -31,7 +31,7 @@ public class Inimigo : MonoBehaviour
     void Update()
     {
         distancia = Vector2.Distance(transform.position, player.transform.position);
-        
+        print(player.podeBater);
     }
 
     private void OnMouseDown()
@@ -74,14 +74,20 @@ public class Inimigo : MonoBehaviour
                     }
                     vida--;
                     animator.SetTrigger("Atacando");
-
+                    player.TocarSomEspada(
+                        );
 
 
                     Instantiate(fumaça, transform.position, Quaternion.identity);
 
+                   
+
+                    StartCoroutine(subirEscala());
+                    player.podeBater = false;
+                    StartCoroutine(player.resetarCooldown());
                     if (vida <= 0)
                     {
-                        Destroy(gameObject);
+                        player.podeBater = true;
                         AmoStatico.levelDoPlayer++;
                         player.atualizarTexto();
                         if (gameObject.tag == "BossFinal")
@@ -90,11 +96,11 @@ public class Inimigo : MonoBehaviour
                             player.vencer();
 
                         }
-                    }
+                        Destroy(gameObject);
 
-                    StartCoroutine(subirEscala());
-                    player.podeBater = false;
-                    StartCoroutine(player.resetarCooldown());
+
+
+                    }
                 }   
             }
             else
@@ -110,7 +116,7 @@ public class Inimigo : MonoBehaviour
             }
         }
     }
-
+  
     IEnumerator subirEscala()
     {
         Vector3 escalaOriginal = transform.localScale;
