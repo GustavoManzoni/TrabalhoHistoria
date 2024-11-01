@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
     }
     public IEnumerator resetarCooldown()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1);
         podeBater = true;
 
     }

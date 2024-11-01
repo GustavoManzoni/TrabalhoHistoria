@@ -17,9 +17,8 @@ public class Inimigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cooldown = 0;
-        velocidadeEscala = 0.01f;
-        escalaMaxima = 1.2f;
+        
+      
         player = FindObjectOfType<Player>();
         Player = GameObject.FindWithTag("Player").transform;
         distanciaDeAtaque = 7;
@@ -31,7 +30,7 @@ public class Inimigo : MonoBehaviour
     void Update()
     {
         distancia = Vector2.Distance(transform.position, player.transform.position);
-        print(player.podeBater);
+      
     }
 
     private void OnMouseDown()
@@ -42,6 +41,7 @@ public class Inimigo : MonoBehaviour
           
             if (AmoStatico.levelDoPlayer >= meuLevel)
             {
+
                 if (player.podeBater)
                 {
                     switch (gameObject.tag)
@@ -49,29 +49,38 @@ public class Inimigo : MonoBehaviour
 
                         case "Inim1":
                             if (!AmoStatico.item1)
-                                player.playerMorrer();
-
+                            {
+                                player.vida--;
+                                StartCoroutine(gameManager.TextoAvisoAmuleto());
+                            }
                             break;
                         case "Inim2":
                             if (!AmoStatico.item2)
-                                player.playerMorrer();
-
+                            {
+                                player.vida--;
+                                StartCoroutine(gameManager.TextoAvisoAmuleto());
+                            }
                             break;
 
                         case "Inim3":
                             if (!AmoStatico.item3)
-                                player.playerMorrer();
-
+                            {
+                                player.vida--;
+                                StartCoroutine(gameManager.TextoAvisoAmuleto());
+                            }
                             break;
                         case "BossFinal":
                             if (!AmoStatico.item3)
-                                player.playerMorrer();
-
+                            {
+                                player.vida--;
+                                StartCoroutine(gameManager.TextoAvisoAmuleto());
+                            }
                             break;
 
 
 
                     }
+
                     vida--;
                     animator.SetTrigger("Atacando");
                     player.TocarSomEspada(

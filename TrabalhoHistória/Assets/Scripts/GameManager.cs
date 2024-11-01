@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject[] minions, spawns, slotsInv;
-    public GameObject minion1, minion2, minion3, textoAviso, pause;
+    public GameObject minion1, minion2, minion3, textoAviso, textoAvisoAmuleto, pause;
     public float timer, cooldown;
  
 
@@ -92,9 +92,16 @@ public class GameManager : MonoBehaviour
     public IEnumerator TextoAviso()
     {
         textoAviso.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3);
         textoAviso.SetActive(false);
        
+    }
+    public IEnumerator TextoAvisoAmuleto()
+    {
+        textoAvisoAmuleto.SetActive(true);
+        yield return new WaitForSeconds(3);
+        textoAvisoAmuleto.SetActive(false);
+
     }
     public void MainMenu()
     {

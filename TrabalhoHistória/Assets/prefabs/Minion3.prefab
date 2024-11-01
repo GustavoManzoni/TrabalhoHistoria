@@ -101,12 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dba66e65c58e445b9c0e56b5fb252b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.01
+  cooldown: 0
   escalaMaxima: 1.2
-  velocidadeEscala: 0
+  velocidadeEscala: 0.01
   meuLevel: 10
   vida: 3
-  distanciaDeAtaque: 0
+  distanciaDeAtaque: 7
   distancia: 0
   "fuma\xE7a": {fileID: 1557056994820644013, guid: d1af91a0d1a13a544926eb15737e91d8,
     type: 3}
